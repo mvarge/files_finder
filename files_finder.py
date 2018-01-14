@@ -1,7 +1,6 @@
 import os
 import sys
 from collections import deque
-from helper import parse
 
 class Finder(object):
 
@@ -44,6 +43,7 @@ class File(object):
 
 
 if __name__ == "__main__":
+    from helper import parse
     args = parse()
     r = Result(args.number, fullpath=args.fullpath)
     r.find(args.path)
