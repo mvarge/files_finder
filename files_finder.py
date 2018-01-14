@@ -1,6 +1,7 @@
 import os
 import sys
 from collections import deque
+from helper import parse
 
 class Finder(object):
 
@@ -43,7 +44,8 @@ class File(object):
 
 
 if __name__ == "__main__":
-    r = Result(int(sys.argv[2]))
-    r.find(sys.argv[1])
+    args = parse()
+    r = Result(args.number, fullpath=args.fullpath)
+    r.find(args.path)
     for f in sorted(r.deque, key=lambda x: x.size, reverse=True):
         print f.size, f.name
