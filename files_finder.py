@@ -28,7 +28,9 @@ class FileQueue(Finder):
     """Queue-like object for handling fixed size results.
 
     It assures that just the requested number of results are stored
-    and handles it ordering (sort) and output requirements as well.
+    and handles it ordering (sort) and output requirements as well,
+    such as if it should print just filename of its full path, or
+    if file size should be displayed in a human-friendly fashion.
     """
 
     def __init__(self, size, fullpath=False, human_read=False):
@@ -39,7 +41,7 @@ class FileQueue(Finder):
         self.deque.append(File('', 0))
 
     def add(self, file):
-        # Only adds if file.size if value is at least equal min
+        # Only adds if file.size value is at least equal min
         if file.size >= min([f.size for f in self.deque]):
             self.sort()
             self.deque.append(file)
