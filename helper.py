@@ -7,4 +7,6 @@ def parse():
             type=int, default=10)
     parser.add_argument("-f", "--fullpath", help="If true, use fullpath for filenames", 
             action="store_true", default=False)
+    parser.add_argument("-H", "--human", help="If true, human readable form", 
+            action="store_true", default=False)
     return parser.parse_args()

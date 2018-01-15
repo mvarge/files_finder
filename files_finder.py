@@ -1,5 +1,4 @@
 import os
-import sys
 from collections import deque
 
 class Finder(object):
@@ -20,9 +19,10 @@ class Finder(object):
 
 class Result(Finder):
 
-    def __init__(self, size, fullpath=False):
+    def __init__(self, size, fullpath=False, human_read=False):
         self.size = size
         self.fullpath = fullpath
+        self.human_read = human_read
         self.deque = deque(maxlen=size)
         self.deque.append(File('', 0))
 
@@ -33,6 +33,12 @@ class Result(Finder):
 
     def sort(self):
         self.deque = deque(sorted(self.deque, key=lambda x: x.size), maxlen=self.size)
+
+    def output(self):
+        for f in sorted(r.deque, key=lambda x: x.size, reverse=True):
+            if self.human_read:
+                f.size = sizeof_fmt(f.size)
+            print("{0:<10} {1}".format(f.size, f.name))
 
 
 class File(object):
@@ -52,7 +58,6 @@ def sizeof_fmt(num, suffix='B'):
 if __name__ == "__main__":
     from helper import parse
     args = parse()
-    r = Result(args.number, fullpath=args.fullpath)
+    r = Result(args.number, fullpath=args.fullpath, human_read=args.human)
     r.find(args.path)
-    for f in sorted(r.deque, key=lambda x: x.size, reverse=True):
-        print sizeof_fmt(f.size), f.name
+    r.output()
