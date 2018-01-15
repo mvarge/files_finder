@@ -2,6 +2,12 @@ import os
 from collections import deque
 
 class Finder(object):
+    """Parent object for other classes.
+
+    This object is created to be inherited and consequently handling
+    the tree traversal logical using recursion feeding another
+    deque object inside child object.
+    """
 
     def find(self, path):
         for f in os.listdir(path):
@@ -17,7 +23,12 @@ class Finder(object):
                 pass
 
 
-class Result(Finder):
+class FileQueue(Finder):
+    """Queue-like object for handling fixed size results.
+
+    It assures that just the requested number of results are stored
+    and handles it ordering (sort) and output requirements as well.
+    """
 
     def __init__(self, size, fullpath=False, human_read=False):
         self.size = size
@@ -27,6 +38,7 @@ class Result(Finder):
         self.deque.append(File('', 0))
 
     def add(self, file):
+        # Only adds if file.size if value is at least equal min
         if file.size >= min([f.size for f in self.deque]):
             self.sort()
             self.deque.append(file)
@@ -56,8 +68,9 @@ def sizeof_fmt(num, suffix='B'):
     return "%.1f%s%s" % (num, 'Y', suffix)
 
 if __name__ == "__main__":
+    # In case of using it as a module these are the most likely commands
     from helper import parse
     args = parse()
-    r = Result(args.number, fullpath=args.fullpath, human_read=args.human)
+    r = FileQueue(args.number, fullpath=args.fullpath, human_read=args.human)
     r.find(args.path)
     r.output()

@@ -23,8 +23,8 @@ $ python files_finder.py -p '/cygdrive/c/Users/Marcelo/Documents' --number=2 --f
 ```
 $ python
 Python 2.7.14 (default, Oct 31 2017, 21:12:13)
->>> from files_finder import Result
->>> r = Result(5)
+>>> from files_finder import FileQueue
+>>> r = FileQueue(5)
 >>> r.find('/cygdrive/c/Users/Marcelo/Documents')
 >>> r.deque
 >>>
