@@ -6,6 +6,8 @@ This program is written for finding out the biggest files within a specific fold
 
 It uses recursion for the tree traversal part and has custom data structures capable of just storing the exact ammount of requested results, solving any space possible issues. It aims and uses performance friendly approaches, but it's not guaranteed that it uses the best approach amongst all possible ones.
 
+It can be used as a "unix-like" command line or as a Python module, see below for use cases.
+
 ## How to use it
 ```
 $ python files_finder.py -p '/cygdrive/c/Users/Marcelo/Documents' -n 5
