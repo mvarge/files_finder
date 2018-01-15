@@ -2,7 +2,7 @@
 Program to recursively find (big) files under a tree/directory
 
 ## About
-This program is written for finding out the biggest files within a specific folder, as well as a form of showing the approach to accomplish this task in the same way as other tools do (e.g. in a Linux env: find, du, etc).
+This program is written for finding out the biggest files within a specific folder, as well as a form of exposing the rationale and approach used to accomplish this task in the same way as other tools do (e.g. in a Linux env: find, du, etc).
 
 It uses recursion for the tree traversal part and has custom data strutures capable of just storing the exact ammount of requested results, solving any space possible issues. It aims and uses performance friendly approaches, but it's not guaranteed that it uses the best approach amongst all possible ones.
 
