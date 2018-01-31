@@ -21,7 +21,9 @@ $ python files_finder.py -p '/cygdrive/c/Users/Marcelo/Documents' --number=2 --f
 925.0MB    /cygdrive/c/Users/Marcelo/Documents/FIFA 17 Demo/Temp/_replay0.bin
 800.0MB    /cygdrive/c/Users/Marcelo/Documents/FIFA 16/instance0/replay0.bin
 ```
+
 ## How to use it as a Python module
+
 ```
 $ python
 Python 2.7.14 (default, Oct 31 2017, 21:12:13)
